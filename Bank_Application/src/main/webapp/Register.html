@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>E-Bank Sign Up</title>
+</head>
+
+<body>
+
+    <div class="container-fluid py-5 bg-light">
+        <div class="text-center mb-4">
+            <h1 class="text-warning">Welcome to E-Bank</h1>
+            <p class="lead text-muted">Sign up for a new account</p>
+        </div>
+        <div class="row justify-content-center">
+            <form action="signup.jsp" method="post" class="col-lg-6 col-md-8 col-sm-10" onsubmit="return validateForm()">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="accountId" placeholder="Account Id" name="id" pattern="\d{4}" title="Please enter a 4-digit integer" required>
+                            <label for="accountId">Account ID</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="accountName" placeholder="Account Name" name="name" required>
+                            <label for="accountName">Your Name</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="pass" minlength="4" required>
+                            <label for="password">Password (min 4 characters)</label>
+                        </div>
+                    </div>
+                   
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="balance" placeholder="Amount" name="balance" required>
+                            <label for="balance">Initial Deposit Amount (₹)</label>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button class="btn btn-warning px-4 mt-3">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        function validateForm() {
+            var accountId = document.getElementById("accountId").value;
+            var password = document.getElementById("password").value;
+            var contact = document.getElementById("contact").value;
+
+            // Validate account ID
+            if (!/^\d{4}$/.test(accountId)) {
+                alert("Please enter a 4-digit integer for Account ID");
+                return false;
+            }
+
+            // Validate password
+            if (password.length < 4) {
+                alert("Password must be at least 4 characters long");
+                return false;
+            }
+
+            // Validate contact number
+            if (!/^\d{10}$/.test(contact)) {
+                alert("Please enter a 10-digit number for Contact");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>
